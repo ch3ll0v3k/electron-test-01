@@ -1,0 +1,5 @@
+[
+  { "name": "Prog-A", "version": "1.3.1", "path": "prog_A.exe" },
+  { "name": "Prog-B", "version": "2.0.3", "path": "prog_B.exe" },
+  { "name": "Prog-C", "version": "3.0.6", "path": "prog_C.exe" }
+]

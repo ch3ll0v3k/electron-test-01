@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript">
+      
+      let files = [];
+
+      const install = async(index)=>{
+        const prog = files[ index ];
+        alert(`Installing: ${prog.name} => ${prog.path}`);
+      }
+
+      window.addEventListener('load', ()=>{
+
+        files = api.jsonFromFile('./src/settings.json');
+        const tableBody = document.querySelector('#table-body');
+
+        for( const index in files ){
+
+          const file = files[ index ];
+
+          tableBody.innerHTML += `
+            <tr>
+              <td>${ file.name }</td>
+              <td>${ file.version }</td>
+              <td>
+                <button onClick="install(${index})">
+                  Install
+                </button>
+              </td>
+            </tr>
+          `;
+        }
+      });
+
+    </script>
+
+  </head>
+  <body>
+
+    <table id="table">
+      <thead id="table-head">
+        <tr>
+          <th>Name</th>
+          <th>Version</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="table-body">
+      </tbody>
+
+    </table>
+
+  </body>
+</html>
